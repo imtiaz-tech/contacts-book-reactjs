@@ -11,7 +11,7 @@ th, td {
 }
 
 tr:nth-child(even) {
-  background-color:skyblue;
+  background-color:lightseagreen;
 }
 .create_form button{
   padding:10px;
@@ -22,7 +22,24 @@ tr:nth-child(even) {
 .form-input {
   width: 100%;
   padding: 10px;
+  background-color: lightseagreen;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.button {
+  width: 90px;
+  height: 35px;
+  background-color: lightseagreen;
+  color: white;
+  border: 1px solid skyblue;
+  border-radius: 5px;
+}
+
+.create {
+  margin-left: 10px;
+}
+.buttons-container {
+  margin: 10px 10px;
 }
