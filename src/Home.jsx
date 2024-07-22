@@ -1,6 +1,6 @@
 import Create from "./Create";
 import React, { useState } from "react";
-import List from "./Imtiaz";
+import List from "./List";
 
 
 function Home() {

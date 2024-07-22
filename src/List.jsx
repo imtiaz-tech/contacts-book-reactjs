@@ -1,20 +1,24 @@
-import react from 'react';
+import react from "react";
 import React, { useState, useEffect } from "react";
 import ContactInfo from "./ContactInfo";
 import axios from "axios";
 
-function List () {
+function List() {
   const [contacts, setcontacts] = useState([]);
-    useEffect(() => {
-        axios
-          .get("http://localhost:3001/get")
-          .then((result) => setcontacts(result.data?.data))
-          .catch((err) => console.log(err));
-      }, []);
-      
-    return(
-        <div>
-            {contacts.length === 0 ? (
+
+  const getContacts = () => {
+    axios
+      .get("http://localhost:3001/get")
+      .then((result) => setcontacts(result.data?.data))
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    getContacts();
+  }, []);
+
+  return (
+    <div>
+      {contacts.length === 0 ? (
         <div>
           <h2>No Contacts</h2>
         </div>
@@ -28,16 +32,17 @@ function List () {
           </tr>
           {contacts.map((contact) => (
             <ContactInfo
-             // key={contact._id} 
-             _id={contact._id}  
+              // key={contact._id}
+              _id={contact._id}
               Name={contact.Name}
               PhoneNo={contact.PhoneNo}
               Address={contact.Address}
+              getContacts={getContacts}
             />
           ))}
         </table>
       )}
-        </div>
-    )
+    </div>
+  );
 }
 export default List;
