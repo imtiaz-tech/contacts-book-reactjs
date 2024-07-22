@@ -3,14 +3,13 @@ import axios from "axios";
 
 function Create(props) {
   const { getContacts, setview, editObject } = props;
-  console.log("🚀 ~ Create ~ editObject:", editObject);
 
   const [Name, setName] = useState("");
   const [PhoneNo, setPhoneNo] = useState("");
   const [Address, setAddress] = useState("");
 
 
-  
+
   useEffect(() => {
     const { Name, PhoneNo, Address } = editObject;
     setName(Name);
