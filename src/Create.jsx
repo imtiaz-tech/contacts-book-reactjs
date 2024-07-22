@@ -4,9 +4,9 @@ import axios from "axios";
 function Create(props) {
     const { getContacts, setview } = props;
 
-  const [Name, setName] = useState();
-  const [PhoneNo, setPhoneNo] = useState();
-  const [Address, setAddress] = useState();
+  const [Name, setName] = useState("");
+  const [PhoneNo, setPhoneNo] = useState("");
+  const [Address, setAddress] = useState("");
 
   const handleAdd = () => {
     axios
@@ -27,28 +27,27 @@ function Create(props) {
       <h4>Name</h4>
       <input
         type="text"
-        Name=""
-        id=""
+        name="Name"
         placeholder="Enter Name"
+        value={Name}
         onChange={(e) => setName(e.target.value)}
       />
       <br />
       <h4>PhoneNo</h4>
       <input
         type="text"
-        Phone
-        No=""
-        id=""
+        name="PhoneNo"
         placeholder="Enter Phone No"
+        value={PhoneNo}
         onChange={(e) => setPhoneNo(e.target.value)}
       />
       <br />
       <h4>Address</h4>
       <input
         type="text"
-        Address=""
-        id=""
+        name="Address"
         placeholder="Enter Address"
+        value={Address}
         onChange={(e) => setAddress(e.target.value)}
       />
       <br />
