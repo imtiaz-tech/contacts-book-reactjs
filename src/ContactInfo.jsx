@@ -13,7 +13,7 @@ function ContactInfo(props){
           })
           .catch((err) => console.log(err));
       };
-        
+      
     return(
         <tr>
           <td>{Name}</td>

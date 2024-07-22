@@ -16,7 +16,7 @@ function Create(){
     return(
         <div>
          <h4>Name</h4>
-        <input  type="text" Name="" id="" placeholder="Enter Name" onChange={(e) => setName(e.target.value)}/>
+        <input  type="text" Name="" id=""  placeholder="Enter Name" onChange={(e) => setName(e.target.value)}/>
         <br/>
         <h4>PhoneNo</h4>
         <input type="text" Phone No="" id="" placeholder="Enter Phone No" onChange={(e) => setPhoneNo(e.target.value)}/>
@@ -25,7 +25,7 @@ function Create(){
         <input type="text" Address="" id="" placeholder="Enter Address" onChange={(e) => setAddress(e.target.value)}/>
         <br/>
         <br/>
-        <button type="button" onClick={handleAdd}>submit</button>
+        <button className="button" type="button" onClick={handleAdd}>submit</button>
 
         </div>
     )
