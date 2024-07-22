@@ -1,17 +1,9 @@
-import react from "react";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import ContactInfo from "./ContactInfo";
-import axios from "axios";
 
-function List() {
-  const [contacts, setcontacts] = useState([]);
+function List(props) {
+  const { getContacts, setcontacts, contacts } = props;
 
-  const getContacts = () => {
-    axios
-      .get("http://localhost:3001/get")
-      .then((result) => setcontacts(result.data?.data))
-      .catch((err) => console.log(err));
-  };
   useEffect(() => {
     getContacts();
   }, []);
@@ -32,12 +24,12 @@ function List() {
           </tr>
           {contacts.map((contact) => (
             <ContactInfo
-              // key={contact._id}
               _id={contact._id}
               Name={contact.Name}
               PhoneNo={contact.PhoneNo}
               Address={contact.Address}
               getContacts={getContacts}
+              setcontacts={setcontacts}
             />
           ))}
         </table>
