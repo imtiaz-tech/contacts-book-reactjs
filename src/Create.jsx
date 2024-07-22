@@ -1,27 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Create(props) {
-    const { getContacts, setview } = props;
+  const { getContacts, setview, editObject } = props;
+  console.log("🚀 ~ Create ~ editObject:", editObject);
 
   const [Name, setName] = useState("");
   const [PhoneNo, setPhoneNo] = useState("");
   const [Address, setAddress] = useState("");
 
-  const handleAdd = () => {
-    axios
-      .post("http://localhost:3001/add", {
-        Name: Name,
-        PhoneNo: PhoneNo,
-        Address: Address,
-      })
-      .then((result) => {
-        getContacts();
-        setview("list");
-      })
-      .catch((err) => console.log(err));
-  };
+
   
+  useEffect(() => {
+    const { Name, PhoneNo, Address } = editObject;
+    setName(Name);
+    setPhoneNo(PhoneNo);
+    setAddress(Address);
+  }, [editObject]);
+
+
+
+  const handleAdd = () => {
+    if (editObject._id) {
+      axios
+        .patch("http://localhost:3001/update/" + editObject._id, {
+          Name: Name,
+          PhoneNo: PhoneNo,
+          Address: Address,
+        })
+        .then((result) => {
+          getContacts();
+          setview("list");
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .post("http://localhost:3001/add", {
+          Name: Name,
+          PhoneNo: PhoneNo,
+          Address: Address,
+        })
+        .then((result) => {
+          getContacts();
+          setview("list");
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   return (
     <div>
       <h4>Name</h4>

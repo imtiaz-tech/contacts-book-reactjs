@@ -6,6 +6,12 @@ import axios from "axios";
 function Home() {
   const [view, setview] = useState("list");
   const [contacts, setcontacts] = useState([]);
+  const [editObject, setEditObject] = useState({});
+
+  const onEditClick = (_id, Name, PhoneNo, Address) => {
+    setEditObject({ _id, Name, PhoneNo, Address });
+    setview("create");
+  };
 
   const getContacts = () => {
     axios
@@ -30,6 +36,7 @@ function Home() {
           getContacts={getContacts}
           setcontacts={setcontacts}
           contacts={contacts}
+          onEditClick={onEditClick}
         />
       ) : (
         <Create
@@ -37,6 +44,7 @@ function Home() {
           setcontacts={setcontacts}
           contacts={contacts}
           setview={setview}
+          editObject={editObject}
         />
       )}
     </div>

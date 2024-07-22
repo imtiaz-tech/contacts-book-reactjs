@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ContactInfo from "./ContactInfo";
 
 function List(props) {
-  const { getContacts, setcontacts, contacts } = props;
+  const { getContacts, setcontacts, onEditClick, contacts } = props;
 
   useEffect(() => {
     getContacts();
@@ -30,6 +30,7 @@ function List(props) {
               Address={contact.Address}
               getContacts={getContacts}
               setcontacts={setcontacts}
+              onEditClick={onEditClick}
             />
           ))}
         </table>

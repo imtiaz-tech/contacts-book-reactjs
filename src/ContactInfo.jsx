@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 function ContactInfo(props) {
-  const { _id, Name, PhoneNo, Address, getContacts } = props;
+  const { _id, Name, PhoneNo, Address, getContacts, onEditClick } = props;
   const handleDelete = (id) => {
     axios
       .delete("http://localhost:3001/delete/" + id)
@@ -22,7 +22,12 @@ function ContactInfo(props) {
         <button className="button" onClick={() => handleDelete(_id)}>
           Delete
         </button>
-        <button className="button">Edit</button>
+        <button
+          className="button"
+          onClick={() => onEditClick(_id, Name, PhoneNo, Address)}
+        >
+          Edit
+        </button>
       </td>
     </tr>
   );
