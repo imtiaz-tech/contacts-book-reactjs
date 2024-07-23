@@ -27,7 +27,13 @@ function Home() {
         <button className="button" onClick={() => setview("list")}>
           List
         </button>
-        <button className="button create" onClick={() => setview("create")}>
+        <button
+          className="button create"
+          onClick={() => {
+            setview("create");
+            setEditObject({});
+          }}
+        >
           Create
         </button>
       </div>
