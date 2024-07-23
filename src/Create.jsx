@@ -5,7 +5,6 @@ function Create(props) {
   const { getContacts, setview, editObject, setEditObject } = props;
 
   const [Name, setName] = useState("");
-  console.log("🚀 ~ Create ~ Name:", Name)
   const [PhoneNo, setPhoneNo] = useState("");
   const [Address, setAddress] = useState("");
 
@@ -79,7 +78,7 @@ function Create(props) {
       <br />
       <br />
       <button className="button" type="button" onClick={() => handleAdd()}>
-        submit
+        { editObject._id ? "Update" : "Create" }
       </button>
     </div>
   );

@@ -7,7 +7,6 @@ function Home() {
   const [view, setview] = useState("list");
   const [contacts, setcontacts] = useState([]);
   const [editObject, setEditObject] = useState({});
-  console.log("🚀 ~ Home ~ editObject:", editObject)
 
   const onEditClick = (_id, Name, PhoneNo, Address) => {
     setEditObject({ _id, Name, PhoneNo, Address });
