@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Create(props) {
-  const { getContacts, setview, editObject } = props;
+  const { getContacts, setview, editObject, setEditObject } = props;
 
   const [Name, setName] = useState("");
+  console.log("🚀 ~ Create ~ Name:", Name)
   const [PhoneNo, setPhoneNo] = useState("");
   const [Address, setAddress] = useState("");
 
 
 
   useEffect(() => {
-    const { Name, PhoneNo, Address } = editObject;
-    setName(Name);
-    setPhoneNo(PhoneNo);
-    setAddress(Address);
+    setName(editObject.Name);
+    setPhoneNo(editObject.PhoneNo);
+    setAddress(editObject.Address);
   }, [editObject]);
 
 
@@ -30,6 +30,7 @@ function Create(props) {
         .then((result) => {
           getContacts();
           setview("list");
+          setEditObject({});
         })
         .catch((err) => console.log(err));
     } else {
@@ -77,7 +78,7 @@ function Create(props) {
       />
       <br />
       <br />
-      <button className="button" type="button" onClick={handleAdd}>
+      <button className="button" type="button" onClick={() => handleAdd()}>
         submit
       </button>
     </div>

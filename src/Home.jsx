@@ -7,6 +7,7 @@ function Home() {
   const [view, setview] = useState("list");
   const [contacts, setcontacts] = useState([]);
   const [editObject, setEditObject] = useState({});
+  console.log("🚀 ~ Home ~ editObject:", editObject)
 
   const onEditClick = (_id, Name, PhoneNo, Address) => {
     setEditObject({ _id, Name, PhoneNo, Address });
@@ -41,10 +42,9 @@ function Home() {
       ) : (
         <Create
           getContacts={getContacts}
-          setcontacts={setcontacts}
-          contacts={contacts}
           setview={setview}
           editObject={editObject}
+          setEditObject={setEditObject}
         />
       )}
     </div>
