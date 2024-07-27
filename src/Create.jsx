@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Create(props) {
-  const { getContacts, setview, editObject, setEditObject } = props;
+  const {  setview, editObject, setEditObject } = props;
 
   const [Name, setName] = useState("");
   const [PhoneNo, setPhoneNo] = useState("");
@@ -27,7 +27,6 @@ function Create(props) {
           Address: Address,
         })
         .then((result) => {
-          getContacts();
           setview("list");
           setEditObject({});
         })
@@ -40,7 +39,6 @@ function Create(props) {
           Address: Address,
         })
         .then((result) => {
-          getContacts();
           setview("list");
         })
         .catch((err) => console.log(err));

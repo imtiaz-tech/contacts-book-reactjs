@@ -5,7 +5,6 @@ import axios from "axios";
 
 function Home() {
   const [view, setview] = useState("list");
-  const [contacts, setcontacts] = useState([]);
   const [editObject, setEditObject] = useState({});
 
   const onEditClick = (_id, Name, PhoneNo, Address) => {
@@ -13,12 +12,7 @@ function Home() {
     setview("create");
   };
 
-  const getContacts = () => {
-    axios
-      .get("http://localhost:3001/get")
-      .then((result) => setcontacts(result.data?.data))
-      .catch((err) => console.log(err));
-  };
+  
 
   return (
     <div>
@@ -39,14 +33,10 @@ function Home() {
       </div>
       {view == "list" ? (
         <List
-          getContacts={getContacts}
-          setcontacts={setcontacts}
-          contacts={contacts}
           onEditClick={onEditClick}
         />
       ) : (
         <Create
-          getContacts={getContacts}
           setview={setview}
           editObject={editObject}
           setEditObject={setEditObject}
