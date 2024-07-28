@@ -1,16 +1,17 @@
 import react from "react";
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {GetContact,deleteContact} from './Slice'
 
 function ContactInfo(props) {
-  const { _id, Name, PhoneNo, Address, getContacts, onEditClick } = props;
-  const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:3001/delete/" + id)
-      .then((result) => {
-        getContacts();
-      })
-      .catch((err) => console.log(err));
+  const { _id, Name, PhoneNo, Address,onEditClick } = props;
+  const dispatch = useDispatch();
+
+
+  const handleDelete = async (id) => {
+    await dispatch(deleteContact(id));
+    dispatch(GetContact())
   };
 
   return (

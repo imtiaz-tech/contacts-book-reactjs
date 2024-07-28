@@ -22,9 +22,8 @@ export const editContact = createAsyncThunk("contact/editContact", async () => {
 });
 export const deleteContact = createAsyncThunk(
   "contact/deleteContact",
-  async () => {
+  async (id) => {
     const res = await axios.delete("http://localhost:3001/delete/" + id);
-    console.log("🚀 ~ res:", res)
     const data = await res.data;
     return data;
   }
@@ -67,7 +66,7 @@ export const GetContact = createAsyncThunk("contact/GetContact", async () => {
     });
     builder.addCase(deleteContact.fulfilled, (state, action) => {
       state.isloading = false;
-      state.contents = action.payload;
+      state.contents = action.payload.data;
     });
     builder.addCase(deleteContact.rejected, (state, action) => {
       state.isloading = false;

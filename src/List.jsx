@@ -13,7 +13,6 @@ function List(props) {
     dispatch(GetContact());
   }, []);
   const contacts = useSelector((state) => state.contacts.contacts);
-  console.log("🚀 ~ List ~ contacts:", contacts)
   const isloading = useSelector((state) => state.contacts.isloading);
   const error = useSelector((state) => state.contacts.error);
   
@@ -40,6 +39,7 @@ function List(props) {
           </tr>
           {contacts.map((contact) => (
             <ContactInfo
+              key={contact.id}
               _id={contact._id}
               Name={contact.Name}
               PhoneNo={contact.PhoneNo}
