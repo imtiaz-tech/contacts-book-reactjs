@@ -7,8 +7,12 @@ const initialState = {
   error: null,
 };
 
-export const addContact = createAsyncThunk("contact/addContact", async () => {
-  const res = await axios.post("http://localhost:3001/add");
+export const addContact = createAsyncThunk("contact/addContact", async ({Name: Name,
+  PhoneNo: PhoneNo,
+  Address: Address,}) => {
+  const res = await axios.post("http://localhost:3001/add",{Name: Name,
+  PhoneNo: PhoneNo,
+  Address: Address,});
   const data = await res.data;
   return data;
 });

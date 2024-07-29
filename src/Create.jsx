@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addContact } from "./Slice";
 
 function Create(props) {
-  const {  setview, editObject, setEditObject } = props;
+  const { setview, editObject, setEditObject } = props;
 
   const [Name, setName] = useState("");
   const [PhoneNo, setPhoneNo] = useState("");
   const [Address, setAddress] = useState("");
-
-
 
   useEffect(() => {
     setName(editObject.Name);
@@ -16,7 +16,7 @@ function Create(props) {
     setAddress(editObject.Address);
   }, [editObject]);
 
-
+  const dispatch = useDispatch();
 
   const handleAdd = () => {
     if (editObject._id) {
@@ -32,16 +32,11 @@ function Create(props) {
         })
         .catch((err) => console.log(err));
     } else {
-      axios
-        .post("http://localhost:3001/add", {
-          Name: Name,
-          PhoneNo: PhoneNo,
-          Address: Address,
-        })
-        .then((result) => {
-          setview("list");
-        })
-        .catch((err) => console.log(err));
+      dispatch(
+        addContact({ Name: Name, PhoneNo: PhoneNo, Address: Address })
+      ).then((result) => {
+        setview("list");
+      });
     }
   };
 
@@ -76,7 +71,7 @@ function Create(props) {
       <br />
       <br />
       <button className="button" type="button" onClick={() => handleAdd()}>
-        { editObject._id ? "Update" : "Create" }
+        {editObject._id ? "Update" : "Create"}
       </button>
     </div>
   );
